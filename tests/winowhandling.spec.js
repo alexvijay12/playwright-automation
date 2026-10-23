@@ -13,4 +13,9 @@ test('windows handling', async ({ context }) => {
     
 
   // Test code for window handling
-});
+   await newPage.waitForLoadState();
+   await expect(newPage).toHaveTitle(/boys print t-shirt/);
+   await newPage.locator("//span[text()='ADD TO BAG']").click();
+   await newPage.locator("//span[text()='GO TO BAG']").click();
+   await expect(newPage.locator("//div[@class='itemContainer-base-itemName']")).toHaveText("boys print t-shirt");
+}); 
